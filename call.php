@@ -18,9 +18,10 @@ class prankCall{
 	}
 	private function ekse(){
 		$no = $this->correct($this->number);
-		$rand = rand(0123456,9999999);
+		$rand = rand(123456,9999999);
 		$rands = $this->randStr(12);
 		$post = "method=CALL&countryCode=id&phoneNumber=$no&templateID=pax_android_production";
+		$h = []; // reset headers
 		$h[] = "x-request-id: ebf61bc3-8092-4924-bf45-$rands";
 		$h[] = "Accept-Language: in-ID;q=1.0, en-us;q=0.9, en;q=0.8";
 		$h[] = "User-Agent: Grab/5.20.0 (Android 6.0.1; Build $rand)";
@@ -46,9 +47,10 @@ class prankCall{
 		$a=0;
 		$no = $this->correct($this->number);
 		while($a<$many){
-			$rand = rand(0123456,9999999);
+			$rand = rand(123456,9999999);
 			$rands = $this->randStr(12);
 			$post = "method=CALL&countryCode=id&phoneNumber=$no&templateID=pax_android_production";
+			$h = []; // reset headers each loop
 			$h[] = "x-request-id: ebf61bc3-8092-4924-bf45-$rands";
 			$h[] = "Accept-Language: in-ID;q=1.0, en-us;q=0.9, en;q=0.8";
 			$h[] = "User-Agent: Grab/5.20.0 (Android 6.0.1; Build $rand)";
@@ -79,7 +81,7 @@ class prankCall{
 		$data = "abcdefghijklmnopqrstuvwxyz1234567890";
 		$word = "";
 		for($a=0;$a<$l;$a++){
-			$word .= $data{rand(0,strlen($data)-1)};
+			$word .= $data[rand(0,strlen($data)-1)];
 		}
 		return $word;
 	}
